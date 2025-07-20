@@ -28,32 +28,33 @@
   </p>
   <div class="menu-container">
     
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
+      <a href="/" class="menu">
+        首页
+      </a>
     
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
+      <a href="/archives" class="menu">
+        文章分类
+      </a>
     
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
+      <a href="/tags" class="menu">
+        标签
+      </a>
     
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
+      <a href="/post/about" class="menu">
+        关于我
+      </a>
+    
+      <a href="/post/contact" class="menu">
+        联系我
+      </a>
     
   </div>
-  <div class="social-container">
+  <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+      <div class="social-container">
     
       
     
@@ -67,8 +68,32 @@
     
   </div>
 </div>
+        <!-- 最近发布的文章 -->
+        <div class="recent-posts">
+          <h3>最近发布</h3>
+          <ul>
+            <li><a href="/post/kafka-history-and-introduction">Apache Kafka 历史和简介</a></li>
+            <li><a href="/post/flink-history-and-introduction">Apache Flink 历史和简介</a></li>
+            <li><a href="/post/spark-history-and-introduction">Apache Spark 历史和简介</a></li>
+            <li><a href="/post/yi-pian-shang-wei-wan-cheng-de-wen-zhang">一篇尚未完成的文章</a></li>
+            <li><a href="/post/hello-gridea">Hello Gridea</a></li>
+          </ul>
+        </div>
 
-    
+        <!-- 热门标签云 -->
+        <div class="tag-cloud">
+          <h3>热门标签</h3>
+          <div class="tags">
+            <a href="/tag/gridea" class="tag">Gridea</a>
+            <a href="/tag/bigdata" class="tag">大数据</a>
+            <a href="/tag/spark" class="tag">Spark</a>
+            <a href="/tag/flink" class="tag">Flink</a>
+            <a href="/tag/kafka" class="tag">Kafka</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
         <div class="post-container">
   
     <article class="post">
@@ -127,6 +152,37 @@
 
 <script>
   hljs.initHighlightingOnLoad()
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  const icon = themeToggle.querySelector('i');
+
+  // Check for saved theme preference or use system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Apply saved theme or system preference
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    body.classList.add('dark-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+
+  // Toggle theme when button is clicked
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      localStorage.setItem('theme', 'light');
+    }
+  });
 </script>
 
       </div>

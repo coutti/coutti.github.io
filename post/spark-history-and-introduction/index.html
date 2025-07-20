@@ -1,0 +1,472 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="Apache Spark 历史和简介：从MapReduce到大数据处理的革命" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Apache Spark 历史和简介：从MapReduce到大数据处理的革命 | 温故而知新的鸟哥</title>
+<link rel="shortcut icon" href="https://coutti.github.io/favicon.ico?v=1557828835331">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://coutti.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="sidebar">
+        <div class="site-header">
+  <a href="https://coutti.github.io">
+  <img class="avatar" src="https://coutti.github.io/images/avatar.png?v=1557828835331" alt="">
+  </a>
+  <h1 class="site-title">
+    温故而知新的鸟哥
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      <a href="/" class="menu">
+        首页
+      </a>
+    
+      <a href="/archives" class="menu">
+        文章分类
+      </a>
+    
+      <a href="/tags" class="menu">
+        标签
+      </a>
+    
+      <a href="/post/about" class="menu">
+        关于我
+      </a>
+    
+      <a href="/post/contact" class="menu">
+        联系我
+      </a>
+    
+  </div>
+  <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <!-- 最近发布的文章 -->
+        <div class="recent-posts">
+          <h3>最近发布</h3>
+          <ul>
+            <li><a href="/post/spark-history-and-introduction">Apache Spark 历史和简介</a></li>
+            <li><a href="/post/yi-pian-shang-wei-wan-cheng-de-wen-zhang">一篇尚未完成的文章</a></li>
+            <li><a href="/post/hello-gridea">Hello Gridea</a></li>
+          </ul>
+        </div>
+
+        <!-- 热门标签云 -->
+        <div class="tag-cloud">
+          <h3>热门标签</h3>
+          <div class="tags">
+            <a href="/tag/gridea" class="tag">Gridea</a>
+            <a href="/tag/bigdata" class="tag">大数据</a>
+            <a href="/tag/spark" class="tag">Spark</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Apache Spark 历史和简介：从MapReduce到大数据处理的革命
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2023-11-16 ·
+              </time>
+              
+              <a href="/tag/bigdata" class="post-tag">大数据</a>
+              <a href="/tag/spark" class="post-tag">Spark</a>
+            </div>
+            
+            <div class="post-content">
+              <p>在大数据技术的发展历程中，Apache Spark的出现无疑是一场革命性的变革。作为当今最流行的大数据处理框架之一，Spark以其卓越的性能和易用性，彻底改变了人们处理大规模数据的方式。本文将带您深入了解Spark的前世今生、核心架构以及实际应用场景。</p>
+
+              <h3>一、Spark的诞生背景与历史沿革</h3>
+
+              <h4>1.1 大数据处理的史前时代：MapReduce的局限</h4>
+              <p>在Spark出现之前，Hadoop MapReduce是大数据处理的事实标准。MapReduce虽然解决了大规模数据处理的问题，但其设计存在明显缺陷：</p>
+              <ul>
+                <li><strong>磁盘IO密集型</strong>：每次Map和Reduce操作都需要将中间结果写入磁盘</li>
+                <li><strong>批处理导向</strong>：无法支持交互式查询和流处理</li>
+                <li><strong>编程模型复杂</strong>：需要编写大量样板代码</li>
+                <li><strong>执行效率低下</strong>：作业启动开销大，无法有效利用内存</li>
+              </ul>
+
+              <p>这些局限性在数据量爆炸式增长和实时性需求日益提高的背景下变得愈发突出。</p>
+
+              <h4>1.2 Spark的诞生：内存计算的革命</h4>
+              <p>Spark的故事始于2009年，当时加州大学伯克利分校AMP实验室的Matei Zaharia正在研究如何提高大数据处理的效率。他发现，许多数据挖掘算法需要反复访问相同的数据，而MapReduce的磁盘IO操作成为了严重的性能瓶颈。</p>
+
+              <p>Zaharia的解决方案是将中间数据存储在内存中，这一创新思想催生了Spark的原型。2010年，Spark作为开源项目正式发布，并迅速获得了工业界的关注。</p>
+
+              <div style="text-align: center; margin: 20px 0;">
+                <svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                  <!-- 背景 -->
+                  <rect width="600" height="300" fill="#f8f9fa" rx="5" ry="5"/>
+                  <!-- 标题 -->
+                  <text x="300" y="40" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Spark历史时间线</text>
+                  
+                  <!-- 时间线 -->
+                  <line x1="50" y1="70" x2="550" y2="70" stroke="#0066cc" stroke-width="2"/>
+                  
+                  <!-- 2009年 -->
+                  <circle cx="80" cy="70" r="8" fill="#0066cc"/>
+                  <text x="80" y="45" font-family="Arial" font-size="14" text-anchor="middle">2009</text>
+                  <text x="80" y="100" font-family="Arial" font-size="12" text-anchor="middle">Spark项目启动</text>
+                  
+                  <!-- 2010年 -->
+                  <circle cx="140" cy="70" r="8" fill="#0066cc"/>
+                  <text x="140" y="45" font-family="Arial" font-size="14" text-anchor="middle">2010</text>
+                  <text x="140" y="100" font-family="Arial" font-size="12" text-anchor="middle">开源发布</text>
+                  
+                  <!-- 2013年 -->
+                  <circle cx="260" cy="70" r="8" fill="#0066cc"/>
+                  <text x="260" y="45" font-family="Arial" font-size="14" text-anchor="middle">2013</text>
+                  <text x="260" y="100" font-family="Arial" font-size="12" text-anchor="middle">加入Apache孵化器</text>
+                  
+                  <!-- 2014年 -->
+                  <circle cx="320" cy="70" r="8" fill="#0066cc"/>
+                  <text x="320" y="45" font-family="Arial" font-size="14" text-anchor="middle">2014</text>
+                  <text x="320" y="100" font-family="Arial" font-size="12" text-anchor="middle">成为Apache顶级项目</text>
+                  
+                  <!-- 2016年 -->
+                  <circle cx="440" cy="70" r="8" fill="#0066cc"/>
+                  <text x="440" y="45" font-family="Arial" font-size="14" text-anchor="middle">2016</text>
+                  <text x="440" y="100" font-family="Arial" font-size="12" text-anchor="middle">Spark 2.0发布</text>
+                  
+                  <!-- 2020年 -->
+                  <circle cx="530" cy="70" r="8" fill="#0066cc"/>
+                  <text x="530" y="45" font-family="Arial" font-size="14" text-anchor="middle">2020</text>
+                  <text x="530" y="100" font-family="Arial" font-size="12" text-anchor="middle">Spark 3.0发布</text>
+                </svg>
+                <p style="color: #666; font-size: 14px;">图1：Apache Spark的发展时间线</p>
+              </div>
+
+              <h4>1.3 从学术项目到行业标准：Spark的崛起之路</h4>
+              <p>2013年，Spark加入Apache孵化器项目，这标志着它从学术研究项目向成熟的工业级解决方案迈进。2014年，Spark正式成为Apache顶级项目，吸引了众多企业的参与和贡献。</p>
+              <p>2016年，Spark 2.0版本发布，引入了DataFrame API和Spark SQL，极大地简化了数据分析流程。2020年发布的Spark 3.0则进一步提升了性能和易用性，引入了自适应查询执行、动态分区修剪等高级特性。</p>
+              <p>如今，Spark已成为大数据生态系统的核心组件，被Netflix、Uber、Airbnb、Amazon等众多科技巨头广泛采用。</p>
+
+              <h3>二、Spark核心架构与设计理念</h3>
+
+              <h4>2.1 内存计算：Spark性能飞跃的基石</h4>
+              <p>Spark最核心的创新在于其内存计算模型。与MapReduce将中间结果写入磁盘不同，Spark将数据尽可能保存在内存中，从而大幅减少了磁盘IO操作。这一设计使得Spark在某些场景下比MapReduce快100倍以上。</p>
+
+              <div style="text-align: center; margin: 20px 0;">
+                <svg width="600" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+                  <!-- 背景 -->
+                  <rect width="600" height="250" fill="#f8f9fa" rx="5" ry="5"/>
+                  
+                  <!-- 标题 -->
+                  <text x="300" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">MapReduce vs Spark 架构对比</text>
+                  
+                  <!-- MapReduce部分 -->
+                  <text x="150" y="60" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">MapReduce</text>
+                  
+                  <!-- Map阶段 -->
+                  <rect x="50" y="80" width="200" height="40" fill="#e9ecef" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="150" y="105" font-family="Arial" font-size="14" text-anchor="middle">Map任务</text>
+                  
+                  <!-- 磁盘存储 -->
+                  <rect x="80" y="130" width="140" height="30" fill="#dee2e6" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="150" y="150" font-family="Arial" font-size="12" text-anchor="middle">磁盘存储中间结果</text>
+                  
+                  <!-- Reduce阶段 -->
+                  <rect x="50" y="170" width="200" height="40" fill="#e9ecef" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="150" y="195" font-family="Arial" font-size="14" text-anchor="middle">Reduce任务</text>
+                  
+                  <!-- 箭头 -->
+                  <line x1="150" y1="120" x2="150" y2="130" stroke="#333" stroke-width="1.5"/>
+                  <polygon points="147,130 150,135 153,130" fill="#333"/>
+                  <line x1="150" y1="160" x2="150" y2="170" stroke="#333" stroke-width="1.5"/>
+                  <polygon points="147,170 150,175 153,170" fill="#333"/>
+                  
+                  <!-- Spark部分 -->
+                  <text x="450" y="60" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Spark</text>
+                  
+                  <!-- RDD操作 -->
+                  <rect x="350" y="80" width="200" height="40" fill="#e9ecef" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="450" y="105" font-family="Arial" font-size="14" text-anchor="middle">Transformation操作</text>
+                  
+                  <!-- 内存存储 -->
+                  <rect x="380" y="130" width="140" height="30" fill="#c3e6cb" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="450" y="150" font-family="Arial" font-size="12" text-anchor="middle">内存存储中间结果</text>
+                  
+                  <!-- Action操作 -->
+                  <rect x="350" y="170" width="200" height="40" fill="#e9ecef" stroke="#ced4da" rx="3" ry="3"/>
+                  <text x="450" y="195" font-family="Arial" font-size="14" text-anchor="middle">Action操作</text>
+                  
+                  <!-- 箭头 -->
+                  <line x1="450" y1="120" x2="450" y2="130" stroke="#333" stroke-width="1.5"/>
+                  <polygon points="447,130 450,135 453,130" fill="#333"/>
+                  <line x1="450" y1="160" x2="450" y2="170" stroke="#333" stroke-width="1.5"/>
+                  <polygon points="447,170 450,175 453,170" fill="#333"/>
+                </svg>
+                <p style="color: #666; font-size: 14px;">图2：MapReduce与Spark架构对比</p>
+              </div>
+
+              <h4>2.2 弹性分布式数据集（RDD）：Spark的核心抽象</h4>
+              <p>弹性分布式数据集（Resilient Distributed Dataset，RDD）是Spark的核心数据抽象。RDD是一个不可变的分布式对象集合，可以被分区存储在集群的多个节点上。RDD具有以下关键特性：</p>
+              <ul>
+                <li><strong>不可变性</strong>：一旦创建，RDD内容不能被修改</li>
+                <li><strong>分区存储</strong>：数据被分成多个分区，分布在集群节点上</li>
+                <li><strong>容错机制</strong>：通过血统（Lineage）信息实现故障恢复</li>
+                <li><strong>惰性计算</strong>：只有当Action操作被调用时才会执行计算</li>
+                <li><strong>持久化能力</strong>：可以将数据缓存到内存或磁盘</li>
+              </ul>
+
+              <h4>2.3 Spark生态系统：一站式大数据解决方案</h4>
+              <p>Spark不仅仅是一个批处理引擎，而是一个完整的大数据处理生态系统，包含多个组件：</p>
+              <ul>
+                <li><strong>Spark Core</strong>：核心引擎，提供RDD和基本操作</li>
+                <li><strong>Spark SQL</strong>：用于结构化数据查询，支持SQL和DataFrame API</li>
+                <li><strong>Spark Streaming</strong>：实时流处理组件</li>
+                <li><strong>MLlib</strong>：机器学习库，提供常用算法实现</li>
+                <li><strong>GraphX</strong>：图计算框架</li>
+                <li><strong>SparkR</strong>：R语言API</li>
+              </ul>
+
+              <div style="text-align: center; margin: 20px 0;">
+                <svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                  <!-- 背景 -->
+                  <rect width="600" height="300" fill="#f8f9fa" rx="5" ry="5"/>
+                  
+                  <!-- 中心：Spark Core -->
+                  <circle cx="300" cy="150" r="60" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="300" y="150" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Spark Core</text>
+                  <text x="300" y="170" font-family="Arial" font-size="12" text-anchor="middle">RDD、任务调度、内存管理</text>
+                  
+                  <!-- Spark SQL -->
+                  <circle cx="450" cy="100" r="45" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="450" y="100" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Spark SQL</text>
+                  <text x="450" y="115" font-family="Arial" font-size="10" text-anchor="middle">SQL、DataFrame</text>
+                  
+                  <!-- Spark Streaming -->
+                  <circle cx="450" cy="220" r="45" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="450" y="220" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Spark Streaming</text>
+                  <text x="450" y="235" font-family="Arial" font-size="10" text-anchor="middle">实时流处理</text>
+                  
+                  <!-- MLlib -->
+                  <circle cx="150" cy="80" r="45" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="150" y="80" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">MLlib</text>
+                  <text x="150" y="95" font-family="Arial" font-size="10" text-anchor="middle">机器学习</text>
+                  
+                  <!-- GraphX -->
+                  <circle cx="150" cy="220" r="45" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="150" y="220" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">GraphX</text>
+                  <text x="150" y="235" font-family="Arial" font-size="10" text-anchor="middle">图计算</text>
+                  
+                  <!-- SparkR -->
+                  <circle cx="300" cy="270" r="40" fill="#e9ecef" stroke="#0066cc" stroke-width="2"/>
+                  <text x="300" y="270" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">SparkR</text>
+                  <text x="300" y="285" font-family="Arial" font-size="10" text-anchor="middle">R语言API</text>
+                  
+                  <!-- 连接线 -->
+                  <line x1="350" y1="120" x2="405" y2="115" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+                  <line x1="350" y1="180" x2="405" y2="205" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+                  <line x1="250" y1="120" x2="205" y2="105" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+                  <line x1="250" y1="180" x2="205" y2="205" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+                  <line x1="300" y1="210" x2="300" y2="230" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="5,3"/>
+                </svg>
+                <p style="color: #666; font-size: 14px;">图3：Apache Spark生态系统组件</p>
+              </div>
+
+              <h3>三、Spark实战：从入门到精通</h3>
+
+              <h4>3.1 Spark Shell：交互式数据分析利器</h4>
+              <p>Spark提供了交互式Shell环境，支持Scala、Python和R语言，非常适合数据分析和原型开发。以下是使用Spark Shell进行数据分析的简单示例：</p>
+
+              <pre><code class="scala">// 启动Spark Shell
+$ spark-shell
+
+// 读取文本文件创建RDD
+val lines = sc.textFile("hdfs://path/to/file.txt")
+
+// 单词计数示例
+val wordCounts = lines.flatMap(_.split(" "))
+                      .map(word => (word, 1))
+                      .reduceByKey(_ + _)
+
+// 显示结果
+wordCounts.take(10).foreach(println)
+
+// 将结果保存到文件
+wordCounts.saveAsTextFile("hdfs://path/to/output")</code></pre>
+
+              <h4>3.2 Spark SQL与DataFrame：结构化数据分析</h4>
+              <p>Spark SQL引入了DataFrame API，将结构化数据处理变得简单直观。以下是使用Spark SQL分析JSON数据的示例：</p>
+
+              <pre><code class="scala">// 创建SparkSession
+val spark = SparkSession.builder()
+  .appName("Spark SQL Example")
+  .getOrCreate()
+
+import spark.implicits._
+import org.apache.spark.sql.functions._
+
+// 读取JSON文件创建DataFrame
+val df = spark.read.json("hdfs://path/to/people.json")
+
+// 显示DataFrame内容
+ df.show()
++----+-------+
+| age|   name|
++----+-------+
+|null|Michael|
+|  30|   Andy|
+|  19| Justin|
++----+-------+
+
+// 注册为临时视图
+df.createOrReplaceTempView("people")
+
+// 执行SQL查询
+val adults = spark.sql("SELECT name FROM people WHERE age > 18")
+adults.show()
++----+----+
+|name|
++----+----+
+|Andy|
+|Justin|
++----+----+
+
+// 使用DataFrame API进行分析
+val averageAge = df.select(avg("age")).first().getDouble(0)
+println(s"Average age: $averageAge")</code></pre>
+
+              <h4>3.3 Spark Streaming：实时数据处理</h4>
+              <p>Spark Streaming允许开发者处理实时数据流。以下是一个简单的流处理示例，从TCP socket读取数据并进行单词计数：</p>
+
+              <pre><code class="scala">// 创建StreamingContext，每5秒处理一次数据
+val ssc = new StreamingContext(spark.sparkContext, Seconds(5))
+
+// 从TCP socket读取数据
+val lines = ssc.socketTextStream("localhost", 9999)
+
+// 实时单词计数
+val words = lines.flatMap(_.split(" "))
+val wordCounts = words.map(word => (word, 1)).reduceByKey(_ + _)
+
+// 打印结果
+wordCounts.print()
+
+// 启动流处理
+ssc.start()
+ssc.awaitTermination()</code></pre>
+
+              <h3>四、Spark应用场景与最佳实践</h3>
+
+              <h4>4.1 Spark典型应用场景</h4>
+              <p>Spark的多功能性使其适用于各种大数据场景：</p>
+              <ul>
+                <li><strong>批处理ETL</strong>：数据清洗、转换和加载</li>
+                <li><strong>交互式数据分析</strong>：通过Spark SQL进行即席查询</li>
+                <li><strong>实时流处理</strong>：监控和分析实时数据流</li>
+                <li><strong>机器学习</strong>：使用MLlib构建预测模型</li>
+                <li><strong>图计算</strong>：社交网络分析、路径查找等</li>
+              </ul>
+
+              <h4>4.2 Spark性能优化最佳实践</h4>
+              <p>为了充分发挥Spark的性能，以下是一些最佳实践：</p>
+              <ul>
+                <li><strong>合理设置资源</strong>：根据数据量和集群规模调整executor内存和核心数</li>
+                <li><strong>数据持久化</strong>：对重复使用的RDD使用cache()或persist()方法</li>
+                <li><strong>避免数据倾斜</strong>：使用加盐（Salting）或预聚合技术</li>
+                <li><strong>使用广播变量</strong>：减少小数据集的网络传输</li>
+                <li><strong>选择合适的序列化方式</strong>：优先使用Kryo序列化</li>
+                <li><strong>使用DataFrame而非RDD</strong>：DataFrame提供了更好的优化和性能</li>
+              </ul>
+
+              <h3>五、Spark的未来发展趋势</h3>
+
+              <p>随着大数据技术的不断发展，Spark也在持续演进。未来，我们可以期待以下趋势：</p>
+              <ul>
+                <li><strong>性能持续提升</strong>：自适应执行、向量化查询等技术将进一步提高性能</li>
+                <li><strong>与云原生技术融合</strong>：更好地支持Kubernetes等容器编排平台</li>
+                <li><strong>流批一体</strong>：Structured Streaming将进一步模糊批处理和流处理的界限</li>
+                <li><strong>机器学习简化</strong>：AutoML功能将使机器学习更加普及</li>
+                <li><strong>SQL功能增强</strong>：更完整的SQL标准支持和更高的查询性能</li>
+              </ul>
+
+              <h3>六、总结</h3>
+
+              <p>Apache Spark作为大数据处理领域的革命性技术，通过内存计算和统一的编程模型，极大地简化了大规模数据处理的复杂性。从学术界的一个研究项目到如今大数据生态系统的核心，Spark的发展历程充满了创新和突破。</p>
+              <p>无论是批处理、交互式查询、实时流处理还是机器学习，Spark都提供了强大而灵活的解决方案。随着技术的不断进步，Spark将继续在大数据领域发挥核心作用，帮助企业和开发者更好地挖掘数据价值。</p>
+              <p>对于数据工程师和数据科学家而言，掌握Spark已成为一项必备技能。希望本文能帮助您更好地理解Spark，并在实际项目中充分发挥其强大功能。</p>
+            </div>
+          </article>
+        </div>
+    
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  // Theme toggle functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+  const icon = themeToggle.querySelector('i');
+
+  // Check for saved theme preference or use system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Apply saved theme or system preference
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    body.classList.add('dark-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+
+  // Toggle theme when button is clicked
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
